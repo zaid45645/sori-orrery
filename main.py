@@ -29,6 +29,7 @@ orbit_color = 'grey'
 
 class Planet():
     def __init__(self, name, distance, speed, radius, color):
+        self.name = name
         self.distance = distance
         self.speed = speed
         self.angle = 0
@@ -69,6 +70,7 @@ class Orrery:
             planet.update()
             x, y, z = planet.get_position()
             self.ax.scatter(x, y, z, c=planet.color, s=planet.radius*10)
+            self.ax.text(x, y, z, planet.name, ha='center', va='center', size=10)
             theta = np.linspace(0, 2*np.pi, 100)
             x_orbit = planet.distance * np.cos(theta)
             y_orbit = planet.distance * np.sin(theta)
